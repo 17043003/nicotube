@@ -4,7 +4,11 @@ require "uri"
 
 class VideosController < ApplicationController
   def top
-    
+  end
+
+  def search
+    p params[:word]
+    p params[:type]
   end
 
   def show

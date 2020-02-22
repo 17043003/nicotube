@@ -1,2 +1,9 @@
 h1 検索画面
 
+= form_with url: '/videos/search', method: :get, local: true do |f|
+  = f.label :word
+  = f.text_field :word
+
+  = f.select :type, [['動画','video'], ['放送', 'live']]
+
+  = f.submit '検索'
