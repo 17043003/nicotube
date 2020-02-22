@@ -51,5 +51,6 @@ class VideosController < ApplicationController
   end
 
   def show
+    p params[:id]
   end
 end
