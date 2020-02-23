@@ -7,5 +7,5 @@ h2 = "検索ワード：#{@word}"
 - @content.each do |content|
   .content-group
     = image_tag content[:thumbnail]
-    = link_to content[:title], content[:contentId]
+    = link_to content[:title], {controller: :videos, action: :watched, videoId: content[:contentId], name: content[:title]}, method: :post
     = link_to "(別タブ)", "https://embed.nicovideo.jp/watch/#{content[:contentId]}?oldScript=1&amp;referer=http%3A%2F%2Flocalhost%3A3000%2F&amp;from=252&amp;allowProgrammaticFullScreen=1", target: "_blank"

@@ -42,6 +42,26 @@ class VideosController < ApplicationController
     end
   end
 
+  def watched
+    @video = Video.find_by(videoId: params[:videoId])
+    if @video
+      @video.watched_at = Time.zone.now
+    else
+      @video = Video.new(video_params)
+      @video.watched_at = Time.zone.now
+    end
+
+    if @video.save
+      redirect_to "/videos/#{@video.videoId}"
+    end
+  end
+
   def show
+    
+  end
+
+  private
+  def video_params
+    params.permit(:name, :videoId, :watched_at)
   end
 end
