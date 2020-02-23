@@ -46,9 +46,11 @@ class VideosController < ApplicationController
     @video = Video.find_by(videoId: params[:videoId])
     if @video
       @video.watched_at = Time.zone.now
+      @video.watch_time += 1
     else
       @video = Video.new(video_params)
       @video.watched_at = Time.zone.now
+      @video.watch_time = 1
     end
 
     if @video.save
