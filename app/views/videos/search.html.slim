@@ -1,4 +1,5 @@
 h1 検索結果
+h2 = "検索ワード：#{@word}"
 
 - if flash.present?
   = flash[:notice]
@@ -7,3 +8,4 @@ h1 検索結果
   .content-group
     = image_tag content[:thumbnail]
     = link_to content[:title], content[:contentId]
+    = link_to "(別タブ)", "https://embed.nicovideo.jp/watch/#{content[:contentId]}?oldScript=1&amp;referer=http%3A%2F%2Flocalhost%3A3000%2F&amp;from=252&amp;allowProgrammaticFullScreen=1", target: "_blank"
