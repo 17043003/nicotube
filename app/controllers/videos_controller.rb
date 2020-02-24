@@ -40,6 +40,13 @@ class VideosController < ApplicationController
     else
       flash[:notice] = "動画が見つかりませんでした"
     end
+
+    # 閲覧した時間を保存している
+    @content.each do |content|
+      video = Video.find_by(videoId: content[:contentId])
+      content.store(:watched_at, video&.watched_at&.strftime("%Y-%m-%d %H:%M:%S"))
+    end
+
   end
 
   def watched
@@ -59,7 +66,6 @@ class VideosController < ApplicationController
   end
 
   def show
-    
   end
 
   private
